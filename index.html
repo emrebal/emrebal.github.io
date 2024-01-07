@@ -6,12 +6,42 @@
 <body>
 <h1>What a nice header!</h1>
 <p>Hubspot:</p>
-<div id="my-messages-container"></div>
+<script type="text/javascript">
+    function onConversationsAPIReady() {
+      console.log(`HubSpot Conversations API: ${window.HubSpotConversations}`);
+    }
+  
+    /*
+     If external API methods are already available, use them.
+    */
+    if (window.HubSpotConversations) {
+      onConversationsAPIReady();
+    } else {
+      /*
+        Otherwise, callbacks can be added to the hsConversationsOnReady on the window object.
+        These callbacks will be called once the external API has been initialized.
+      */
+      window.hsConversationsOnReady = [onConversationsAPIReady];
+    }
+
+    if (window.HubSpotConversations) {
+        console.log('The api is ready already');
+    } else {
+        window.hsConversationsOnReady = [
+            () => {
+                console.log('Now the api is ready');
+            },
+        ];
+    }
+   </script>
 
 
 
 
-<!--<script>
+
+
+<!--<div id="my-messages-container"></div>
+<script>
 window.hsConversationsSettings = {
   loadImmediately: true,
   inlineEmbedSelector: '#my-messages-container'

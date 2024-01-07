@@ -6,6 +6,11 @@
 <body>
 <h1>What a nice header!</h1>
 <p>Hubspot:</p>
+<div id="hubspot-conversations-inline-parent">
+    <iframe id="hubspot-conversations-inline-iframe" />
+</div>
+
+
 <script type="text/javascript">
     function onConversationsAPIReady() {
       console.log(`HubSpot Conversations API: ${window.HubSpotConversations}`);
@@ -33,7 +38,19 @@
             },
         ];
     }
-   </script>
+
+    window.hsConversationsSettings = {
+        loadImmediately: false,
+        inlineEmbedSelector: '#some-id',
+        enableWidgetCookieBanner: true,
+        disableAttachment: true
+    };
+
+/* ... */
+
+    window.HubSpotConversations.widget.load();
+
+</script>
 
 
 

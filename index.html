@@ -6,9 +6,13 @@
 <body>
 <h1>What a nice header!</h1>
 <p>Hubspot:</p>
-<iframe src="https://app-eu1.hubspot.com/live-messages/143912305/inbox/3123598010#live-chat" title="Hubspot"></iframe>
-
-
+<div id="my-messages-container"></div>
+<script>
+window.hsConversationsSettings = {
+  loadImmediately: true,
+  inlineEmbedSelector: '#my-messages-container'
+};
+</script>
 
 
 
